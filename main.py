@@ -1,6 +1,10 @@
 import board, pieces, ai
 from move import Move
 
+###  From Stacey
+import tkinter as tk
+from my_board import PlayingBoard 
+
 # Returns a move object based on the users input. Does not check if the move is valid.
 def get_user_move():
     print("Example Move: A2 A4")
@@ -63,6 +67,24 @@ def letter_to_xpos(letter):
 #
 # Entry point.
 #
+
+def GUI_SetUP():
+
+    this_width=1000
+    this_height=850
+    #52,60/73
+    root.geometry(str(this_width) + 'x' + str(this_height))
+
+    root.grid_rowconfigure(0, weight=1)
+    root.grid_columnconfigure(0, weight=1)
+
+    root.grid_rowconfigure(4, weight=1)
+    root.grid_columnconfigure(4, weight=1)
+
+root = tk.Tk()
+GUI_SetUP()
+playing_board =PlayingBoard(root).grid(row=1, column=1, sticky='news')
+
 board = board.Board.new()
 print(board.to_string())
 
